@@ -100,6 +100,7 @@ $(document).ready(function(){
   minLifespanSlider.val(tracker.minLifespan);
   maxLifespanSlider.val(tracker.maxLifespan);
   weightSlider.val(tracker.weight);
+  speedSlider.val(tracker.speed);
   gear.click(function(){
     if(settingsDiv.css('display') == 'none'){
       settingsDiv.css({'display': 'block'});
