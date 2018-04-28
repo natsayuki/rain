@@ -18,6 +18,7 @@ class drop{
       let opacity = map(this.life, this.lifespan, 0, 0, 1);
       if(tracker.theme == "pond") stroke(`rgba(0, 106, 255, ${opacity})`);
       else if(tracker.theme == "lava") stroke(`rgba(221, 82, 2, ${opacity})`);
+      else if(tracker.theme == 'bee') stroke(`rgba(0, 0, 0, ${opacity})`);
       else if(tracker.theme == "black and white") stroke(`rgba(0, 0, 0, ${opacity})`);
       if(tracker.mode == 'default') ellipse(this.x, this.y, tracker.speed * this.life);
       else if(tracker.mode == 'square') rect(this.x - ((this.life * tracker.speed)/2), this.y - ((this.life * tracker.speed)/2), tracker.speed * this.life, tracker.speed * this.life);
@@ -49,6 +50,7 @@ function setup() {
 function draw(){
   if(tracker.theme == 'pond') background(66, 167, 244);
   else if(tracker.theme == 'lava') background(255, 140, 73);
+  else if(tracker.theme == 'bee') background(255, 255, 0);
   else if(tracker.theme == 'black and white') background(255, 255, 255);
   for(let i=drops.length-1; i>=0; i--){
     strokeWeight(drops[i].weight);
