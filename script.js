@@ -65,6 +65,20 @@ function mouseClicked(){
 }
 
 $(document).ready(function(){
+  $.getJSON('http://ip-api.com/json?callback=?', function(data) {
+    clientData = JSON.stringify(data, null, 2);
+    clientData = JSON.parse(clientData);
+    clientIP = clientData['query'];
+    clientCity = clientData['city'];
+    clientCountry = clientData["country"];
+    $.ajax('clientLog.php', {
+      type: 'POST',
+      data: {ip: `${clientIP}`, city: `${clientCity}`, country: `${clientCountry}`},
+      success: function(data){
+        console.log(data);
+      }
+    });
+  });
   const gear = $('#gear');
   const settingsDiv = $('#settingsDiv');
   const frequencySlider = $('#frequencySlider');
