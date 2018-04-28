@@ -39,3 +39,6 @@
 .sounding{
   content: url('images/soundOn.png') !important;
 }
+.subWrapper{
+  display: inline-block;
+}

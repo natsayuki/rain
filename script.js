@@ -19,7 +19,8 @@ class drop{
       if(tracker.theme == "pond") stroke(`rgba(0, 106, 255, ${opacity})`);
       else if(tracker.theme == "lava") stroke(`rgba(221, 82, 2, ${opacity})`);
       else if(tracker.theme == "black and white") stroke(`rgba(0, 0, 0, ${opacity})`);
-      ellipse(this.x, this.y, 5 * this.life);
+      if(tracker.mode == 'default') ellipse(this.x, this.y, tracker.speed * this.life);
+      else if(tracker.mode == 'square') rect(this.x - ((this.life * tracker.speed)/2), this.y - ((this.life * tracker.speed)/2), tracker.speed * this.life, tracker.speed * this.life);
       this.life++;
     }else this.alive = false;
   }
@@ -32,6 +33,8 @@ class Tracker{
     this.weight = 1;
     this.sound = false;
     this.theme = "pond";
+    this.speed = 5;
+    this.mode = 'default';
   }
 }
 tracker = new Tracker
@@ -74,6 +77,7 @@ $(document).ready(function(){
   const weightText = $('#weightText');
   const soundToggle = $('#sound');
   const themeSelector = $('#themeSelector');
+  const modeSelector = $('#modeSelector');
   frequencySlider.val(tracker.frequency);
   minLifespanSlider.val(tracker.minLifespan);
   maxLifespanSlider.val(tracker.maxLifespan);
@@ -117,5 +121,8 @@ $(document).ready(function(){
   });
   themeSelector.change(function(){
     tracker.theme = $(this).val();
+  });
+  modeSelector.change(function(){
+    tracker.mode = $(this).val();
   });
 });
