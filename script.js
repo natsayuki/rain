@@ -92,6 +92,8 @@ $(document).ready(function(){
   const soundToggle = $('#sound');
   const themeSelector = $('#themeSelector');
   const modeSelector = $('#modeSelector');
+  const speedSlider = $('#speedSlider');
+  const speedText = $('#speedText');
   frequencySlider.val(tracker.frequency);
   minLifespanSlider.val(tracker.minLifespan);
   maxLifespanSlider.val(tracker.maxLifespan);
@@ -138,5 +140,9 @@ $(document).ready(function(){
   });
   modeSelector.change(function(){
     tracker.mode = $(this).val();
+  });
+  speedSlider.change(function(){
+    tracker.speed = $(this).val();
+    speedText.text(tracker.speed);
   });
 });
