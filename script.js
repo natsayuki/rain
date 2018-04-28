@@ -22,6 +22,7 @@ class drop{
       else if(tracker.theme == "black and white") stroke(`rgba(0, 0, 0, ${opacity})`);
       if(tracker.mode == 'default') ellipse(this.x, this.y, tracker.speed * this.life);
       else if(tracker.mode == 'square') rect(this.x - ((this.life * tracker.speed)/2), this.y - ((this.life * tracker.speed)/2), tracker.speed * this.life, tracker.speed * this.life);
+      else if(tracker.mode == 'triangle') triangle(this.x - (this.life * tracker.speed), this.y - (this.life * tracker.speed), this.x, this.y + (this.life * tracker.speed), this.x + (this.life * tracker.speed), this.y - (this.life * tracker.speed))
       this.life++;
     }else this.alive = false;
   }
@@ -101,6 +102,8 @@ $(document).ready(function(){
   maxLifespanSlider.val(tracker.maxLifespan);
   weightSlider.val(tracker.weight);
   speedSlider.val(tracker.speed);
+  themeSelector.val('pond');
+  modeSelector.val('default');
   gear.click(function(){
     if(settingsDiv.css('display') == 'none'){
       settingsDiv.css({'display': 'block'});
