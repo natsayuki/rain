@@ -32,3 +32,10 @@
 #frequencySlider. #minLifespanSlider, #maxLifespanSlider{
   direction: ltr;
 }
+#sound{
+  height: auto;
+  width: 6rem;
+}
+.sounding{
+  content: url('images/soundOn.png') !important;
+}
