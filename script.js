@@ -20,9 +20,28 @@ class drop{
       else if(tracker.theme == "lava") stroke(`rgba(221, 82, 2, ${opacity})`);
       else if(tracker.theme == 'bee') stroke(`rgba(0, 0, 0, ${opacity})`);
       else if(tracker.theme == "black and white") stroke(`rgba(0, 0, 0, ${opacity})`);
-      if(tracker.mode == 'default') ellipse(this.x, this.y, tracker.speed * this.life);
-      else if(tracker.mode == 'square') rect(this.x - ((this.life * tracker.speed)/2), this.y - ((this.life * tracker.speed)/2), tracker.speed * this.life, tracker.speed * this.life);
-      else if(tracker.mode == 'triangle') triangle(this.x - (this.life * tracker.speed), this.y - (this.life * tracker.speed), this.x, this.y + (this.life * tracker.speed), this.x + (this.life * tracker.speed), this.y - (this.life * tracker.speed))
+      if(tracker.renderMode == 'default'){
+        if(tracker.mode == 'default') ellipse(this.x, this.y, tracker.speed * this.life);
+        else if(tracker.mode == 'square') rect(this.x - ((this.life * tracker.speed)/2), this.y - ((this.life * tracker.speed)/2), tracker.speed * this.life, tracker.speed * this.life);
+        else if(tracker.mode == 'triangle') triangle(this.x - (this.life * tracker.speed), this.y - (this.life * tracker.speed), this.x, this.y + (this.life * tracker.speed), this.x + (this.life * tracker.speed), this.y - (this.life * tracker.speed))
+      }
+      else if(tracker.renderMode == 'webgl'){
+        if(tracker.mode == 'default'){
+          translate(this.x-(windowWidth/2), (this.y-(windowHeight/2)));
+          sphere(tracker.speed * this.life);
+          translate(-(this.x-(windowWidth/2)), -(this.y-(windowHeight/2)));
+        }
+        if(tracker.mode == 'square'){
+          translate(this.x-(windowWidth/2), (this.y-(windowHeight/2)));
+          box(tracker.speed * this.life);
+          translate(-(this.x-(windowWidth/2)), -(this.y-(windowHeight/2)));
+        }
+        if(tracker.mode == 'triangle'){
+          translate(this.x-(windowWidth/2), (this.y-(windowHeight/2)));
+          cone(tracker.speed * this.life);
+          translate(-(this.x-(windowWidth/2)), -(this.y-(windowHeight/2)));
+        }
+      }
       this.life++;
     }else this.alive = false;
   }
@@ -37,12 +56,14 @@ class Tracker{
     this.theme = "pond";
     this.speed = 5;
     this.mode = 'default';
+    this.renderMode = renderMode
   }
 }
 tracker = new Tracker
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  if(tracker.renderMode == 'default') createCanvas(windowWidth, windowHeight);
+  else if(tracker.renderMode == 'webgl') createCanvas(windowWidth, windowHeight, WEBGL);
   const canvas = $('#defaultCanvas0');
   fill(0, 0, 0, 0);
   drops = [];
@@ -100,6 +121,7 @@ $(document).ready(function(){
   const modeSelector = $('#modeSelector');
   const speedSlider = $('#speedSlider');
   const speedText = $('#speedText');
+  const renderModeSelector = $('#renderModeSelector');
   frequencySlider.val(tracker.frequency);
   minLifespanSlider.val(tracker.minLifespan);
   maxLifespanSlider.val(tracker.maxLifespan);
@@ -107,6 +129,7 @@ $(document).ready(function(){
   speedSlider.val(tracker.speed);
   themeSelector.val('pond');
   modeSelector.val('default');
+  renderModeSelector.val(tracker.renderMode);
   gear.click(function(){
     if(settingsDiv.css('display') == 'none'){
       settingsDiv.css({'display': 'block'});
@@ -153,5 +176,10 @@ $(document).ready(function(){
   speedSlider.change(function(){
     tracker.speed = $(this).val();
     speedText.text(tracker.speed);
+  });
+  renderModeSelector.change(function(){
+    tracker.renderMode = $(this).val();
+    if(tracker.renderMode == 'default') window.location.href = window.location.href.replace('?mode=webgl', '');
+    else if(tracker.renderMode == 'webgl') window.location.href += '?mode=webgl';
   });
 });
