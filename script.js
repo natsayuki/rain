@@ -7,13 +7,13 @@ class drop{
     this.life = 0;
     this.alive = true;
     let rand = Math.floor(random(3));
-    if(rand ==  0) this.sound = new Audio('sound/high.mp3');
-    else if(rand == 1) this.sound = new Audio('sound/medium.mp3');
-    else if(rand == 2) this.sound = new Audio('sound/low.mp3');
-    if(tracker.sound) this.sound.play()
+    if(tracker.sound){
+      if(rand ==  0) highSound.play();
+      else if(rand == 1) mediumSound.play();
+      else if(rand == 2) lowSound.play();
+    }
   }
   handle(){
-    // if(this.life == 1) this.sound.play();
     if(this.life <= this.lifespan){
       let opacity = map(this.life, this.lifespan, 0, 0, 1);
       if(tracker.theme == "pond") stroke(`rgba(0, 106, 255, ${opacity})`);
@@ -33,7 +33,7 @@ class Tracker{
     this.minLifespan = 20;
     this.maxLifespan = 120;
     this.weight = 1;
-    this.sound = false;
+    this.sound = true;
     this.theme = "pond";
     this.speed = 5;
     this.mode = 'default';
@@ -46,6 +46,9 @@ function setup() {
   const canvas = $('#defaultCanvas0');
   fill(0, 0, 0, 0);
   drops = [];
+  highSound = loadSound('sound/high.mp3');
+  mediumSound = loadSound('sound/medium.mp3');
+  lowSound = loadSound('sound/low.mp3');
 }
 
 function draw(){
