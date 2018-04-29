@@ -42,3 +42,6 @@
 .subWrapper{
   display: inline-block;
 }
+.colorSelector{
+  display: none;
+}

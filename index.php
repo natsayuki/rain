@@ -37,7 +37,16 @@
               <option value="lava">lava</option>
               <option value="bee">bee</option>
               <option value="black and white">black and white</option>
+              <option value="custom">custom</option>
             </select>
+          </div>
+          <div id="bgWrapper" class="subWrapper colorSelector">
+            <h1>background</h1>
+            <input type="color" id="bgSelector" />
+          </div>
+          <div id="strokeWrapper" class="subWrapper colorSelector">
+            <h1>stroke</h1>
+            <input type="color" id="strokeSelector" />
           </div>
           <div id="modeWrapper" class="subWrapper">
             <h1>mode</h1>
@@ -45,6 +54,13 @@
               <option value="default">circle</option>
               <option value="square">square</option>
               <option value="triangle">triangle</option>
+            </select>
+          </div>
+          <div id="fillWrapper" class="subWrapper">
+            <h1>fill</h1>
+            <select id="fillSelector">
+              <option value="none">none</option>
+              <option value="theme">theme</option>
             </select>
           </div>
         </div>
