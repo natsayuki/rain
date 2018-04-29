@@ -33,7 +33,7 @@ class Tracker{
     this.minLifespan = 20;
     this.maxLifespan = 120;
     this.weight = 1;
-    this.sound = true;
+    this.sound = false;
     this.theme = "pond";
     this.speed = 5;
     this.mode = 'default';
