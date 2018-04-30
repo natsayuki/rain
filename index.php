@@ -19,7 +19,7 @@
     <div id="settingsDiv">
       <center>
         <h1 style="color: red">settings have not been fully tested and may break the page</h1>
-        <!-- <img id="sound" src="images/soundOff.png" class="" /> -->
+        <img id="sound" src="images/soundOff.png" class="" />
         <div id="wrapper0" class="wrapper">
           <div id="renderModeWrapper" class="subWrapper">
             <h1>render mode</h1>

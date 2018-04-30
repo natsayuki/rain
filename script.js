@@ -92,16 +92,17 @@ class Tracker{
   }
 }
 tracker = new Tracker
-
+function preload(){
+  highSound = loadSound('sound/high.ogg');
+  mediumSound = loadSound('sound/medium.ogg');
+  lowSound = loadSound('sound/low.ogg');
+}
+drops = [];
 function setup() {
   if(tracker.renderMode == 'default') createCanvas(windowWidth, windowHeight);
   else if(tracker.renderMode == 'webgl') createCanvas(windowWidth, windowHeight, WEBGL);
   const canvas = $('#defaultCanvas0');
   fill(0, 0, 0, 0);
-  drops = [];
-  highSound = loadSound('sound/high.mp3');
-  mediumSound = loadSound('sound/medium.mp3');
-  lowSound = loadSound('sound/low.mp3');
 }
 
 function draw(){
@@ -131,7 +132,6 @@ $(document).ready(function(){
       type: 'POST',
       data: {ip: `${clientIP}`, city: `${clientCity}`, country: `${clientCountry}`},
       success: function(data){
-        console.log(data);
       }
     });
   });
