@@ -93,9 +93,9 @@ class Tracker{
 }
 tracker = new Tracker
 function preload(){
-  highSound = loadSound('sound/high.ogg');
-  mediumSound = loadSound('sound/medium.ogg');
-  lowSound = loadSound('sound/low.ogg');
+  // highSound = loadSound('sound/high.ogg');
+  // mediumSound = loadSound('sound/medium.ogg');
+  // lowSound = loadSound('sound/low.ogg');
 }
 drops = [];
 function setup() {
