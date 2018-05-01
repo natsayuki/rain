@@ -1,0 +1,30 @@
+{
+  "name": "rain",
+  "version": "1.0.0",
+  "description": "Rain App",
+  "main": "main.js",
+  "scripts": {
+    "test": "main.js",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the42ndturtle/rain.git"
+  },
+  "keywords": [
+    "rain",
+    "shapes"
+  ],
+  "author": "the42ndturtle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the42ndturtle/rain/issues"
+  },
+  "homepage": "https://github.com/the42ndturtle/rain#readme",
+  "devDependencies": {
+    "electron": "^1.8.6"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

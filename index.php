@@ -7,11 +7,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script>window.$ = window.jQuery = require('jquery');</script>
     <meta charset="utf-8" />
     <script src="p5.min.js"></script>
     <script src="p5.sound.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" onload="if (typeof require !=== 'undefined') window.$ = window.jQuery = module.exports;"></script>
     <script src="script.js"></script>
+    <script>if (window.module) module = window.module;</script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
